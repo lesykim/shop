@@ -27,7 +27,7 @@ public class UserManager {
 		return false;
 	}
 	
-	private User findUserByUserCode(int code) {
+	public User findUserByUserCode(int code) {
 		for (User user : list) {
 			if (user.getCode() == code)
 				return user.clone();
@@ -53,6 +53,14 @@ public class UserManager {
 			User user = new User(code, name, id, password);
 			list.add(user);
 			return user.clone();
+		}
+		return new User();
+	}
+	
+	public User findUserByInfo(String id, String password) {
+		for (User user : list) {
+			if (user.getId().equals(id)&&user.getPassword().equals(password))
+				return user;
 		}
 		return new User();
 	}

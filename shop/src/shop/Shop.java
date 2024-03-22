@@ -31,13 +31,14 @@ public class Shop {
 	private final int UPDATE_ITEM = 3;
 
 	private String title;
+	private int logCode;
 	
 	private UserManager userManager = new UserManager();
 	private ItemManager itemManager = new ItemManager();
 	private FileManager fileManager = new FileManager();
 	
 	private void setSystem() {
-		
+		logCode = 0;
 	}
 	
 	public Shop(String message) {
@@ -99,8 +100,20 @@ public class Shop {
 		
 	}
 	
+	private void printLoginMessage(User user) {
+		String message = logCode != 0 ? String.format("%s님 로그인되었습니다.",user.getName())
+				: "회원정보를 다시 확인하세요.";
+		System.out.println(message);
+	}
+	
 	private void login() {
+		String id = inputString("id");
+		String password = inputString("password");
 		
+		User user = userManager.findUserByInfo(id, password);
+		logCode = user.getCode();
+		
+		printLoginMessage(user);
 	}
 	
 	private void logout() {
