@@ -58,7 +58,7 @@ public class Shop {
 			System.err.println("숫자를 입력하세요.");
 		}
 		return number;
-	}
+	} 
 	
 	private void printUser() {
 		System.out.println("[1] 회원가입");

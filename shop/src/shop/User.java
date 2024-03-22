@@ -13,7 +13,7 @@ public class User {
 		this.name = name;
 		this.id = id;
 		this.password = password;
-	}
+	} 
 
 	public Cart getCart() {
 		return cart;
