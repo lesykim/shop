@@ -168,6 +168,7 @@ public class Shop {
 		int count = inputNumber("변경 할 수량");
 		if(count < 0) {
 			System.out.println("수량은 0 이상 가능합니다.");
+			return;
 		}
 		item.setCount(count);
 		System.out.printf("%s 상품의 수량이 변경되었습니다.\n",item.getTitle());
