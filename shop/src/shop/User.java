@@ -2,7 +2,6 @@ package shop;
 
 public class User {
 	private int code;
-	private int money;
 	private String name;
 	private String id;
 	private String password;
@@ -45,16 +44,8 @@ public class User {
 		return name;
 	}
 
-	public int getMoney() {
-		return money;
-	}
-	
 	public int getCode() {
 		return code;
-	}
-
-	public void setMoney(int money) {
-		this.money = money;
 	}
 	
 	public User clone() {

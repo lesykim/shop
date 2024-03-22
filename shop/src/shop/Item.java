@@ -3,6 +3,7 @@ package shop;
 public class Item {
 	private int code;
 	private int price;
+	private int count;
 	private String title;
 	
 	public Item(int code, int price, String title) {
@@ -29,5 +30,17 @@ public class Item {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	public Item clone() {
+		return new Item(this.code, this.price, this.title);
 	}
 }

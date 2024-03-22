@@ -214,7 +214,16 @@ public class Shop {
 	}
 	
 	private void addItem() {
+		String title = inputString("상품명");
+		int price = inputNumber("가격");
 		
+		if(price < 0) {
+			System.err.println("잘못된 가격입니다.");
+			return;
+		}
+		
+		Item item = itemManager.addItem(0, title, price);
+		System.out.printf("%s (%d원) 상품이 추가되었습니다.\n",item.getTitle(),item.getPrice());
 	}
 	
 	private void deleteItem() {
