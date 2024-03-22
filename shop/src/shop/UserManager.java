@@ -14,7 +14,7 @@ public class UserManager {
 	private User findUserByUserId(String id) {
 		for (User user : list) {
 			if (user.getId().equals(id))
-				return user.clone();
+				return user;
 		}
 		return new User();
 	}
@@ -30,7 +30,7 @@ public class UserManager {
 	public User findUserByUserCode(int code) {
 		for (User user : list) {
 			if (user.getCode() == code)
-				return user.clone();
+				return user;
 		}
 		return new User();
 	}
@@ -91,5 +91,22 @@ public class UserManager {
 			}
 		}
 		return new Item();
+	}
+	
+	public void shoppingItem(int code, Item item) {
+		User user = findUserByUserCode(code);
+		ArrayList<Item> itemList = user.getCart().getList();
+		
+		boolean isDupl = false;
+		for(Item temp : itemList) {
+			if(temp.getCode() == item.getCode()) {
+				temp.setCount(temp.getCount()+1);
+				isDupl = true;
+			}
+		}
+		
+		if(!isDupl) {
+			itemList.add(item);
+		}
 	}
 }

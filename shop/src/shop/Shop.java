@@ -123,7 +123,17 @@ public class Shop {
 	}
 	
 	private void shopping() {
+		printItemAll();
 		
+		int code = inputNumber("추가할 상품 코드");
+		Item item = itemManager.findItemByItemCode(code).clone();
+		if(item.getCode() == 0) {
+			System.out.println("존재하지 않는 상품입니다.");
+			return;
+		}
+		item.setCount(1);
+		userManager.shoppingItem(logCode, item);
+		System.out.printf("장바구니에 %s 상품을 추가하였습니다.",item.getTitle());
 	}
 	
 	private void printCart() {
