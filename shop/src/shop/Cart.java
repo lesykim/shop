@@ -34,6 +34,15 @@ public class Cart {
 		return listsize;
 	}
 	
+	public Item findItemByItemCode(int code) {
+		for(Item item : list) {
+			if(code == item.getCode()) {
+				return item;
+			}
+		}
+		return new Item();
+	}
+	
 	public void deleteItem(int code) {
 		for(Item item : list) {
 			if(item.getCode() == code) {

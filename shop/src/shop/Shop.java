@@ -157,6 +157,21 @@ public class Shop {
 	
 	private void update() {
 		printCart();
+		User user = userManager.findUserByUserCode(logCode);
+		Cart cart = user.getCart();
+		int code = inputNumber("삭제할 상품 코드");
+		Item item = cart.findItemByItemCode(code);
+		if(item.getCode() == 0) {
+			System.out.println("존재하지 않는 상품");
+			return;
+		}
+		int count = inputNumber("변경 할 수량");
+		if(count < 0) {
+			System.out.println("수량은 0 이상 가능합니다.");
+		}
+		item.setCount(count);
+		System.out.printf("%s 상품의 수량이 변경되었습니다.\n",item.getTitle());
+		printCart();
 	}
 	
 	private void payment() {
