@@ -1,10 +1,8 @@
 package shop;
 
+import java.util.ArrayList;
+
 public class ItemManager {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+	private ArrayList<Item> list;
+	
 }

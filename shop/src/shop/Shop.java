@@ -32,6 +32,10 @@ public class Shop {
 
 	private String title;
 	
+	private UserManager userManager = new UserManager();
+	private ItemManager itemManager = new ItemManager();
+	private FileManager fileManager = new FileManager();
+	
 	private void setSystem() {
 		
 	}
@@ -54,6 +58,7 @@ public class Shop {
 			System.out.print(message + " : ");
 			String input = sc.next();
 			number = Integer.parseInt(input);
+			System.out.println("-------------");
 		} catch (NumberFormatException e) {
 			System.err.println("숫자를 입력하세요.");
 		}
@@ -69,8 +74,25 @@ public class Shop {
 		System.out.println("[6] 마이페이지");
 	}
 	
+	private String inputString(String message) {
+		System.out.print(message + " : ");
+		return sc.next();
+	}
+	
+	private void printWelcomeMessage(User user) {
+		String message = user.getCode() != 0 ? String.format("%s(%s) %s 회원님 환영합니다.", user.getId(), user.getPassword(), user.getName())
+				: "회원가입 실패";
+		System.out.println(message);
+	}
+	
 	private void join() {
+		String name = inputString("name");
+		String id = inputString("id");
+		String password = inputString("password");
 		
+		User user = userManager.createUser(name, id, password);
+		
+		printWelcomeMessage(user);
 	}
 	
 	private void leave() {
