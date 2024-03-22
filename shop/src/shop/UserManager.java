@@ -64,4 +64,18 @@ public class UserManager {
 		}
 		return new User();
 	}
+	
+	public Item updateItem(int code, int price) {
+		for(User user : list) {
+			ArrayList<Item> itemList = user.getCart().getList();
+			for(int i = 0; i<itemList.size(); i++) {
+				Item item = itemList.get(i);
+				if(item.getCode() == code) {
+					item.setPrice(price);
+					return item.clone();
+				}
+			}
+		}
+		return new Item();
+	}
 }

@@ -11,10 +11,10 @@ public class ItemManager {
 		list = new ArrayList<Item>();
 	}
 	
-	private Item findItemByItemCode(int code) {
+	public Item findItemByItemCode(int code) {
 		for(Item item : list) {
 			if(code == item.getCode()) {
-				return item.clone();
+				return item;
 			}
 		}
 		return new Item();
@@ -40,15 +40,18 @@ public class ItemManager {
 	}
 	
 	public Item deleteItem(int code) {
-		Item temp = null;
 		for(int i =0; i<list.size(); i++) {
 			Item item = list.get(i);
 			if(item.getCode() == code) {
-				temp = item.clone();
 				list.remove(item);
+				return item;
 			}
 		}
-		return temp;
+		return new Item();
+	}
+	
+	public void updateItem(int price, Item item) {
+		item.setPrice(price);
 	}
 	
 	public ArrayList<Item> getList() {

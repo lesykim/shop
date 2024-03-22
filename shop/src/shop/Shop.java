@@ -237,7 +237,7 @@ public class Shop {
 	}
 	
 	private void printItemMessage(Item item) {
-		String message = item != null ? String.format("%s 상품이 삭제되었습니다.",item.getTitle())
+		String message = item.getCode() != 0 ? String.format("%s 상품이 삭제되었습니다.",item.getTitle())
 				: "상품코드를 다시 확인하세요.";
 		System.out.println(message);
 	}
@@ -250,7 +250,23 @@ public class Shop {
 	}
 	
 	private void updateItem() {
+		printItemAll();
+		int code = inputNumber("수정할 상품코드");
+		Item item = itemManager.findItemByItemCode(code);
+		if(item.getCode() == 0) {
+			System.out.println("상품코드를 다시 확인하세요.");
+			return;
+		}
 		
+		int price = inputNumber("수정할 가격");
+		
+		if(price < 0) {
+			System.out.println("잘못된 가격입니다.");
+			return;
+		}
+		
+		itemManager.updateItem(price,item);
+		userManager.updateItem(code,price);
 	}
 	
 	private void runItemSubMenu(int select) {
