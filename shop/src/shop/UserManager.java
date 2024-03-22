@@ -109,4 +109,13 @@ public class UserManager {
 			itemList.add(item);
 		}
 	}
+	
+	public void printUserCart(User user) {
+		System.out.printf("%s님의 장바구니 ▼\n",user.getName());
+		ArrayList<Item> itemList = user.getCart().getList();
+		for(Item item : itemList) {
+			int price = item.getCount()*item.getPrice();
+			System.out.printf("(%s)%s [%d]개 | %d원\n",item.getCode(),item.getTitle(),item.getCount(),price);
+		}
+	}
 }

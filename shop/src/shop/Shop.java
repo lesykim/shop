@@ -133,11 +133,12 @@ public class Shop {
 		}
 		item.setCount(1);
 		userManager.shoppingItem(logCode, item);
-		System.out.printf("장바구니에 %s 상품을 추가하였습니다.",item.getTitle());
+		System.out.printf("장바구니에 %s 상품을 추가하였습니다.\n",item.getTitle());
 	}
 	
 	private void printCart() {
-		
+		User user = userManager.findUserByUserCode(logCode);		
+		userManager.printUserCart(user);
 	}
 	
 	private void printMypageSubMenu() {
