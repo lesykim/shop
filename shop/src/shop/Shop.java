@@ -117,7 +117,8 @@ public class Shop {
 	}
 	
 	private void logout() {
-		
+		logCode = 0;
+		System.out.println("로그아웃 되었습니다.");
 	}
 	
 	private void shopping() {
