@@ -246,6 +246,7 @@ public class Shop {
 		printItemAll();
 		int code = inputNumber("삭제할 상품코드");
 		Item item = itemManager.deleteItem(code);
+		userManager.deleteItem(code);
 		printItemMessage(item);
 	}
 	
