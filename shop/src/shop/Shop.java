@@ -1,5 +1,6 @@
 package shop;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Shop {
@@ -214,6 +215,7 @@ public class Shop {
 	}
 	
 	private void addItem() {
+		printItemAll();
 		String title = inputString("상품명");
 		int price = inputNumber("가격");
 		
@@ -222,12 +224,29 @@ public class Shop {
 			return;
 		}
 		
-		Item item = itemManager.addItem(0, title, price);
+		Item item = itemManager.addItem(title, price);
 		System.out.printf("%s (%d원) 상품이 추가되었습니다.\n",item.getTitle(),item.getPrice());
 	}
 	
+	private void printItemAll() {
+		ArrayList<Item> list = itemManager.getList();
+		System.out.println("상품 목록 ▼");
+		for(Item item : list) {
+			System.out.printf("(%d) %s : %d원\n",item.getCode(),item.getTitle(),item.getPrice());
+		}
+	}
+	
+	private void printItemMessage(Item item) {
+		String message = item != null ? String.format("%s 상품이 삭제되었습니다.",item.getTitle())
+				: "상품코드를 다시 확인하세요.";
+		System.out.println(message);
+	}
+	
 	private void deleteItem() {
-		
+		printItemAll();
+		int code = inputNumber("삭제할 상품코드");
+		Item item = itemManager.deleteItem(code);
+		printItemMessage(item);
 	}
 	
 	private void updateItem() {

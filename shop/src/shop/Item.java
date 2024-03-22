@@ -6,9 +6,13 @@ public class Item {
 	private int count;
 	private String title;
 	
+	public Item() {
+		
+	}
+	
 	public Item(int code, int price, String title) {
-		this.title = title;
 		this.code = code;
+		this.title = title;
 		this.price = price;
 	}
 	
