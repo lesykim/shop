@@ -33,4 +33,15 @@ public class Cart {
 		listsize = list.size();
 		return listsize;
 	}
+	
+	public void deleteItem(int code) {
+		for(Item item : list) {
+			if(item.getCode() == code) {
+				list.remove(item);
+				System.out.println("상품 삭제 완료");
+				return;
+			}
+		}
+		System.out.println("존재하지 않는 상품");
+	}
 }

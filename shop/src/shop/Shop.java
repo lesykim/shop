@@ -146,13 +146,17 @@ public class Shop {
 		System.out.println("[2] 수량수정");
 		System.out.println("[3] 결제");
 	}
-		
+	
 	private void delete() {
-		
+		printCart();
+		int code = inputNumber("삭제할 상품 코드");
+		User user = userManager.findUserByUserCode(logCode);		
+		Cart cart = user.getCart();
+		cart.deleteItem(code);
 	}
 	
 	private void update() {
-		
+		printCart();
 	}
 	
 	private void payment() {
