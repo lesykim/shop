@@ -34,6 +34,28 @@ public class Cart {
 		return listsize;
 	}
 	
+	public int getTotal() {
+		int sum = 0;
+		for(Item item : list) {
+			sum += item.getPrice()*item.getCount();
+		}
+		return sum;
+	}
+	
+	public void clearCart() {
+		list.clear();
+	}
+	
+	public int findItemCountByCode(int code) {
+		int count = 0;
+		for(Item item : list) {
+			if(code == item.getCode()) {
+				count = item.getCount();
+			}
+		}
+		return count;
+	}
+	
 	public Item findItemByItemCode(int code) {
 		for(Item item : list) {
 			if(code == item.getCode()) {

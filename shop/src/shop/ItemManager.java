@@ -31,6 +31,24 @@ public class ItemManager {
 		}
 		return code;
 	}
+	
+	public void deleteItemCount(int code, int count) {
+		for(Item item : list) {
+			if(item.getCode() == code) {
+				int cnt = item.getCount()-count;
+				item.setCount(cnt);
+			}
+		}
+	}
+	
+	public void updateItemCount(int itemCount, int code, int count) {
+		for(Item item : list) {
+			if(item.getCode() == code) {
+				int cnt = item.getCount()-itemCount+count;
+				item.setCount(cnt);
+			}
+		}
+	}
 
 	public Item addItem(String title, int price) {
 		int code = generateUserCode();

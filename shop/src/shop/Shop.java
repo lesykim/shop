@@ -152,6 +152,7 @@ public class Shop {
 		int code = inputNumber("삭제할 상품 코드");
 		User user = userManager.findUserByUserCode(logCode);		
 		Cart cart = user.getCart();
+		itemManager.deleteItemCount(code,cart.findItemCountByCode(code));
 		cart.deleteItem(code);
 	}
 	
@@ -159,7 +160,7 @@ public class Shop {
 		printCart();
 		User user = userManager.findUserByUserCode(logCode);
 		Cart cart = user.getCart();
-		int code = inputNumber("삭제할 상품 코드");
+		int code = inputNumber("변경할 상품 코드");
 		Item item = cart.findItemByItemCode(code);
 		if(item.getCode() == 0) {
 			System.out.println("존재하지 않는 상품");
@@ -170,13 +171,39 @@ public class Shop {
 			System.out.println("수량은 0 이상 가능합니다.");
 			return;
 		}
+		itemManager.updateItemCount(item.getCount(), item.getCode(), count);
 		item.setCount(count);
 		System.out.printf("%s 상품의 수량이 변경되었습니다.\n",item.getTitle());
 		printCart();
 	}
 	
+	private int printTotal() {
+		User user = userManager.findUserByUserCode(logCode);
+		Cart cart = user.getCart();
+		int sum = cart.getTotal();
+		System.out.printf("총 결제금액 : %d원\n",sum);
+		return sum;
+	}
+	
+	private void clearCart() {
+		User user = userManager.findUserByUserCode(logCode);
+		Cart cart = user.getCart();
+		cart.clearCart();
+	}
+	
 	private void payment() {
+		printCart();
+		int sum = printTotal();
+		int input = inputNumber("입금");
+		if(sum>input) {
+			System.out.println("현금이 부족합니다.");
+		}
 		
+		
+		
+		clearCart();
+		
+		System.out.println("결제완료");
 	}
 	
 	private void runMyPageSubMenu(int select) {
