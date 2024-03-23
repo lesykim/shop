@@ -180,31 +180,24 @@ public class Shop {
 		printCart();
 	}
 	
-	private int printTotal() {
-		User user = userManager.findUserByUserCode(logCode);
-		Cart cart = user.getCart();
+	private int printTotal(Cart cart) {
 		int sum = cart.getTotal();
 		System.out.printf("총 결제금액 : %d원\n",sum);
 		return sum;
 	}
 	
-	private void clearCart() {
+	private void payment() {
 		User user = userManager.findUserByUserCode(logCode);
 		Cart cart = user.getCart();
-		cart.clearCart();
-	}
-	
-	private void payment() {
 		printCart();
-		int sum = printTotal();
+		int sum = printTotal(cart);
 		int input = inputNumber("입금");
 		if(sum>input) {
 			System.out.println("현금이 부족합니다.");
 		}
 		
-		
-		
-		clearCart();
+		itemManager.updatePaidItemCount(cart);
+		cart.clearCart();
 		
 		System.out.println("결제완료");
 	}
