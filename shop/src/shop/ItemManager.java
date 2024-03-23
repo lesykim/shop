@@ -40,6 +40,14 @@ public class ItemManager {
 		}
 	}
 	
+	public void deleteleaveItemCount(Cart cart) {
+		for(Item item : list) {
+			int code = item.getCode();
+			int count = item.getCount() - cart.findItemCountByCode(code);
+			item.setCount(count);
+		}
+	}
+	
 	public void deleteItemCount(int code, int count) {
 		for(Item item : list) {
 			if(item.getCode() == code) {

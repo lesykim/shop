@@ -15,7 +15,6 @@ public class Cart {
 		this.code = code;
 		list = new ArrayList<Item>();
 	}
-	
 
 	public ArrayList<Item> getList() {
 		return list;
