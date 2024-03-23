@@ -93,6 +93,10 @@ public class UserManager {
 		return new Item();
 	}
 	
+	public void deleteUser(User user) {
+		list.remove(user);
+	}
+	
 	public void shoppingItem(int code, Item item) {
 		User user = findUserByUserCode(code);
 		ArrayList<Item> itemList = user.getCart().getList();
