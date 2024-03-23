@@ -32,6 +32,14 @@ public class ItemManager {
 		return code;
 	}
 	
+	public void updatePaidItemCount(Cart cart) {
+		for(Item item : list) {
+			int count = cart.findItemCountByCode(item.getCode());
+			int itemCnt = item.getCount()-count;
+			item.setCount(itemCnt);
+		}
+	}
+	
 	public void deleteItemCount(int code, int count) {
 		for(Item item : list) {
 			if(item.getCode() == code) {
