@@ -133,6 +133,9 @@ public class Shop {
 		}
 		item.setCount(1);
 		userManager.shoppingItem(logCode, item);
+		Item temp = itemManager.findItemByItemCode(code);
+		int count = temp.getCount()+1;
+		temp.setCount(count);
 		System.out.printf("장바구니에 %s 상품을 추가하였습니다.\n",item.getTitle());
 	}
 	
