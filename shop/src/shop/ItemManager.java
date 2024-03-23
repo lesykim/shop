@@ -66,6 +66,16 @@ public class ItemManager {
 		}
 	}
 
+	public int getTurnOver() {
+		int total = 0;
+		
+		for(Item item : list) {
+			total += item.getPrice()*item.getCount();
+		}
+		
+		return total;
+	}
+	
 	public Item addItem(String title, int price) {
 		int code = generateUserCode();
 		Item item = new Item(code,price,title);
