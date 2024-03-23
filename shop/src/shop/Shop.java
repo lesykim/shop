@@ -345,7 +345,8 @@ public class Shop {
 	}
 	
 	private void trunOver() {
-		
+		int turnover = itemManager.getTurnOver();
+		System.out.println("총 매출액 : "+turnover);
 	}
 	
 	private void runAdmin(int select) {
