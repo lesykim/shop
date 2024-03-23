@@ -17,4 +17,17 @@ public class FileManager {
 		fileName = "shop.txt";
 		file = new File(fileName);
 	}
+	
+	private String createUserString(UserManager userManager) {
+		String userString = "";
+		userString += userManager.createFile();
+		return userString;
+	}
+	
+	public void createString(UserManager user, ItemManager item) {
+		UserManager userManager = user;
+		ItemManager itemManager = item;
+		
+		createUserString(userManager);
+	}
 }
