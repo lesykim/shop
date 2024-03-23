@@ -220,17 +220,17 @@ public class Shop {
 	}
 	
 	private void runUser(int select) {
-		if(select == JOIN) {
+		if(select == JOIN && !isLogin()) {
 			join();
-		}else if(select == LEAVE) {
+		}else if(select == LEAVE && isLogin()) {
 			leave();
-		}else if(select == LOG_IN) {
+		}else if(select == LOG_IN && !isLogin()) {
 			login();
-		}else if(select == LOG_OUT) {
+		}else if(select == LOG_OUT && isLogin()) {
 			logout();
-		}else if(select == SHOPPING) {
+		}else if(select == SHOPPING && isLogin()) {
 			shopping();
-		}else if(select == MY_PAGE) {
+		}else if(select == MY_PAGE && isLogin()) {
 			myPage();
 		}
 	}
@@ -362,6 +362,10 @@ public class Shop {
 			int sel = inputNumber("Admin subMenu");
 			runAdmin(sel);
 		}
+	}
+	
+	private boolean isLogin() {
+		return logCode != 0 ? true : false;
 	}
 	
 	public void run() {
