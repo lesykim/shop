@@ -98,7 +98,17 @@ public class Shop {
 	}
 	
 	private void leave() {
+		String password = inputString("password");
+		User user = userManager.findUserByUserCode(logCode);
+		if(!user.getPassword().equals(password)) {
+			System.out.println("비밀번호를 다시 확인하세요");
+			return;
+		}
 		
+		Cart cart = user.getCart();
+		itemManager.deleteleaveItemCount(cart);
+		userManager.deleteUser(user);
+		System.out.println("탈퇴되었습니다.");
 	}
 	
 	private void printLoginMessage(User user) {
