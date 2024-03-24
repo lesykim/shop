@@ -255,7 +255,7 @@ public class Shop {
 	}
 	
 	private void load() {
-		
+		fileManager.loadString(userManager, itemManager);
 	}
 		
 	private void runFile(int select) {
