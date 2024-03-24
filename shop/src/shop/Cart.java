@@ -74,4 +74,17 @@ public class Cart {
 		}
 		System.out.println("존재하지 않는 상품");
 	}
+	
+	public String createFile() {
+		String file = "";
+		file += code + ",";
+		file += listsize + "*";
+		for(Item item : list) {
+			file += item.getCode()+",";
+			file += item.getTitle()+",";
+			file += item.getPrice()+",";
+			file += item.getCount()+"/";
+		}
+		return file;
+	}
 }
