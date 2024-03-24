@@ -24,10 +24,17 @@ public class FileManager {
 		return userString;
 	}
 	
+	private String createItemString(ItemManager itemManager) {
+		String userString = "";
+		userString += itemManager.createFile();
+		return userString;
+	}
+	
 	public void createString(UserManager user, ItemManager item) {
-		UserManager userManager = user;
 		ItemManager itemManager = item;
+		UserManager userManager = user;
 		
+		createItemString(itemManager);
 		createUserString(userManager);
 	}
 }
