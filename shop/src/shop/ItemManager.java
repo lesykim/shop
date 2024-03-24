@@ -101,4 +101,15 @@ public class ItemManager {
 	public ArrayList<Item> getList() {
 		return this.list;
 	}
+	
+	public String createFile() {
+		String file = "";
+		for(Item item : list) {
+			file += item.getCode()+",";
+			file += item.getTitle()+",";
+			file += item.getPrice()+",";
+			file += item.getCount()+"/";
+		}
+		return file;
+	}
 }
