@@ -251,7 +251,7 @@ public class Shop {
 	}
 	
 	private void save() {
-		
+		fileManager.createString(userManager, itemManager);
 	}
 	
 	private void load() {
