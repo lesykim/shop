@@ -122,4 +122,17 @@ public class UserManager {
 			System.out.printf("(%s)%s [%d]개 | %d원\n",item.getCode(),item.getTitle(),item.getCount(),price);
 		}
 	}
+	
+	public String createFile() {
+		String file = "";
+		for(User user : list) {
+			file += user.getCode()+",";
+			file += user.getName()+",";
+			file += user.getId()+",";
+			file += user.getPassword()+"&";
+			Cart cart = user.getCart();
+			file += cart.createFile()+"\n";
+		}
+		return file;
+	}
 }
