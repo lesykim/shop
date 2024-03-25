@@ -110,7 +110,7 @@ public class FileManager {
 		String[] allData = data.split("\n");
 		String[] itemData = allData[0].split("/");
 		insertItemManager(itemData);
-		insertUserManager(allData);
+		insertUserManager(allData); 
 	}
 	
 	public void loadString(UserManager userManager, ItemManager itemManager) {
