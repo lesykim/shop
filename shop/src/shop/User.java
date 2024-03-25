@@ -5,7 +5,6 @@ public class User {
 	private String name;
 	private String id;
 	private String password;
-	private int cartSize;
 	private Cart cart;
 	
 	public User() {
@@ -18,7 +17,7 @@ public class User {
 		this.id = id;
 		this.password = password;
 		cart = new Cart(code);
-	} 
+	}
 
 	public Cart getCart() {
 		return cart;
@@ -26,10 +25,6 @@ public class User {
 
 	public void setCart(Cart cart) {
 		this.cart = cart;
-	}
-
-	public int getCartSize() {
-		return cartSize;
 	}
 
 	public String getPassword() {
