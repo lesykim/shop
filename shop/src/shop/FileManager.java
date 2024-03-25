@@ -87,12 +87,14 @@ public class FileManager {
 	}
 	
 	private void insertCartInfo(String data) {
-		String[] temp = data.split("*");
+		String[] temp = data.split("\\*");
 		String[] cartInfo = temp[0].split(",");
 		int code = Integer.parseInt(cartInfo[0]);
 		User user = userManager.findUserByUserCode(code);
 		Cart cart = user.getCart();
-		insertItemInfo(temp[1], cart);
+		if(temp.length!=1) {
+			insertItemInfo(temp[1], cart);			
+		}
 	}
 	
 	private void insertUserManager(String[] allData) {
