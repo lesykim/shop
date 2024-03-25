@@ -39,7 +39,8 @@ public class FileManager {
 		UserManager userManager = user;
 		
 		String data = "";
-		data += createItemString(itemManager)+"\n";
+		String itemData = createItemString(itemManager);
+		data += itemData +"\n";
 		data += createUserString(userManager);
 		
 		try {
@@ -54,7 +55,11 @@ public class FileManager {
 		}
 	}
 	
-	private void insertItemManager(String[] itemData){
+	private void insertItemManager(String[] allData){
+		String[] itemData = allData[0].split("/");
+		if(itemData[0].equals("")) {
+			return;
+		}
 		for(int i = 0; i<itemData.length; i++) {
 			String[] itemInfo = itemData[i].split(",");
 			int code = Integer.parseInt(itemInfo[0]);
@@ -111,7 +116,7 @@ public class FileManager {
 		userManager = new UserManager();
 		String[] allData = data.split("\n");
 		String[] itemData = allData[0].split("/");
-		insertItemManager(itemData);
+		insertItemManager(allData);
 		insertUserManager(allData); 
 	}
 	
