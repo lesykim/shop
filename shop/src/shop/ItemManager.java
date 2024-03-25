@@ -102,6 +102,11 @@ public class ItemManager {
 		return this.list;
 	}
 	
+	public void insertItem(int code, String title, int price, int count) {
+		Item item = new Item(code, title, price, count);
+		list.add(item);
+	}
+	
 	public String createFile() {
 		String file = "";
 		for(Item item : list) {
