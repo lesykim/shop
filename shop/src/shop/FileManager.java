@@ -54,11 +54,7 @@ public class FileManager {
 		}
 	}
 	
-	public void parseLoadedData(String data) {
-		itemManager = new ItemManager();
-		userManager = new UserManager();
-		String[] allData = data.split("\n");
-		String[] itemData = allData[0].split("/");
+	public void insertItemManager(String[] itemData){
 		for(int i = 0; i<itemData.length; i++) {
 			String[] itemInfo = itemData[i].split(",");
 			int code = Integer.parseInt(itemInfo[0]);
@@ -66,7 +62,15 @@ public class FileManager {
 			int price = Integer.parseInt(itemInfo[2]);
 			int count = Integer.parseInt(itemInfo[3]);
 			itemManager.insertItem(code, title,price,count);
-		}
+		}		
+	}
+	public void parseLoadedData(String data) {
+		itemManager = new ItemManager();
+		userManager = new UserManager();
+		String[] allData = data.split("\n");
+		String[] itemData = allData[0].split("/");
+		insertItemManager(itemData);
+		
 	}
 	
 	public void loadString(UserManager userManager, ItemManager itemManager) {
