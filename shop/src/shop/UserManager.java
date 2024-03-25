@@ -123,6 +123,11 @@ public class UserManager {
 		}
 	}
 	
+	public void insertUser(int code, String name, String id, String password) {
+		User user = new User(code, name, id, password);
+		list.add(user);
+	}
+	
 	public String createFile() {
 		String file = "";
 		for(User user : list) {
