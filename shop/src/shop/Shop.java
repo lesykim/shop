@@ -49,6 +49,10 @@ public class Shop {
 	
 	private void printMainMenu() {
 		System.out.println("-=- "+title+" -=-");
+		if(logCode != 0) {
+			User user = userManager.findUserByUserCode(logCode);
+			System.out.printf("%s님 로그인 중...\n",user.getName());			
+		}
 		System.out.println("[1] 유저");
 		System.out.println("[2] 파일");
 		System.out.println("[3] 관리자");
