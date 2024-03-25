@@ -75,6 +75,11 @@ public class Cart {
 		System.out.println("존재하지 않는 상품");
 	}
 	
+	public void insertItem(int code, String title, int price, int count) {
+		Item item = new Item(code, title, price, count);
+		list.add(item);
+	}
+	
 	public String createFile() {
 		String file = "";
 		file += code + ",";
