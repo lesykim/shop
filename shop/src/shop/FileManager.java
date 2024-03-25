@@ -74,12 +74,33 @@ public class FileManager {
 		userManager.insertUser(code, name, id, password);
 	}
 	
+	private void insertItemInfo(String data, Cart cart) {
+		String[] itemListInfo = data.split("/");
+		for(int i = 0; i<itemListInfo.length; i++) {
+			String[] itemInfo = itemListInfo[i].split(",");
+			int code = Integer.parseInt(itemInfo[0]);
+			String title = itemInfo[1];
+			int price = Integer.parseInt(itemInfo[2]);
+			int count = Integer.parseInt(itemInfo[3]);
+			cart.insertItem(code, title, price, count);
+		}
+	}
+	
+	private void insertCartInfo(String data) {
+		String[] temp = data.split("*");
+		String[] cartInfo = temp[0].split(",");
+		int code = Integer.parseInt(cartInfo[0]);
+		User user = userManager.findUserByUserCode(code);
+		Cart cart = user.getCart();
+		insertItemInfo(temp[1], cart);
+	}
+	
 	private void insertUserManager(String[] allData) {
 		for(int i = 1; i<allData.length; i++) {
 			String[] temp = allData[i].split("&");
 			
 			insertUserInfo(temp[0]);
-			
+			insertCartInfo(temp[1]);
 		}
 	}
 	
