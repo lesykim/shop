@@ -14,6 +14,9 @@ public class FileManager {
 	private File file;
 	private String fileName;
 	
+	private ItemManager itemManager;
+	private UserManager userManager;
+	
 	public FileManager() {
 		fileName = "shop.txt";
 		file = new File(fileName);
@@ -48,6 +51,48 @@ public class FileManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.err.println("파일저장 실패");
+		}
+	}
+	
+	public void parseLoadedData(String data) {
+		itemManager = new ItemManager();
+		userManager = new UserManager();
+		String[] allData = data.split("\n");
+		String[] itemData = allData[0].split("/");
+		for(int i = 0; i<itemData.length; i++) {
+			String[] itemInfo = itemData[i].split(",");
+			int code = Integer.parseInt(itemInfo[0]);
+			String title = itemInfo[1];
+			int price = Integer.parseInt(itemInfo[2]);
+			int count = Integer.parseInt(itemInfo[3]);
+			itemManager.insertItem(code, title,price,count);
+		}
+	}
+	
+	public void loadString(UserManager userManager, ItemManager itemManager) {
+		if(file.exists()) {
+			String data = "";
+			try {
+				fileReader = new FileReader(file);
+				bufferedReader = new BufferedReader(fileReader);
+				
+				while(bufferedReader.ready()) {
+					data += bufferedReader.readLine()+"\n";
+				}
+				
+				bufferedReader.close();				
+				fileReader.close();
+				
+				parseLoadedData(data);
+				
+				itemManager = this.itemManager;
+				userManager = this.userManager;
+				
+				System.out.println("파일로드 성공");
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.err.println("파일로드 실패");
+			}
 		}
 	}
 }
