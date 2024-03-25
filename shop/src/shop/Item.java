@@ -16,6 +16,13 @@ public class Item {
 		this.price = price;
 	}
 	
+	public Item(int code, String title, int price, int count) {
+		this.code = code;
+		this.title = title;
+		this.price = price;
+		this.count = count;
+	}
+	
 	public int getCode() {
 		return code;
 	}
